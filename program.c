@@ -1,8 +1,12 @@
-#include<stdio.h>
-/*remove comment 5*/
-int main() {
-	// remove comment 1
-	printf("Hello world");//remove comment 2
-	return 0;/*remove comment 4*/
-	//remove comment 3
+int main(){
+  // this is a comment
+  int i = 1;
+  /*
+   some more
+   comments
+  */
+  cout<<i;
+  cout<<endl; // this is for new line
+  return 0;
+  // last one
 }
