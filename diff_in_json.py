@@ -29,6 +29,4 @@ for line in lines:
 for key,value in map1.iteritems():
 	if(map1[key]<>map2[key]):
 		print (key)
-	#print key,value
-#for key,value in map2.iteritems():
-#	print key,value
+
