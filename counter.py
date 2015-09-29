@@ -27,3 +27,4 @@ elif(ans2>ans1):
 	print "Devil"
 else:
 	print "Draw"
+
