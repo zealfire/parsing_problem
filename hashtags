@@ -1,0 +1,43 @@
+import oauth2 as oauth
+import json
+def deep_search(needles, haystack):
+    found = {}
+    if type(needles) != type([]):
+        needles = [needles]
+
+    if type(haystack) == type(dict()):
+        for needle in needles:
+            if needle in haystack.keys():
+                found[needle] = haystack[needle]
+            elif len(haystack.keys()) > 0:
+                for key in haystack.keys():
+                    result = deep_search(needle, haystack[key])
+                    if result:
+                        for k, v in result.items():
+                            found[k] = v
+    elif type(haystack) == type([]):
+        for node in haystack:
+            result = deep_search(needles, node)
+            if result:
+                for k, v in result.items():
+                    found[k] = v
+    return found
+
+CONSUMER_KEY = "YOUR_CONSUMER_KEY"
+CONSUMER_SECRET = "YOUR_CONSUMER_SECRET"
+ACCESS_KEY = "YOUR_ACCESS_KEY"
+ACCESS_SECRET = "YOUR_ACCESS_SECRET"
+
+consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
+access_token = oauth.Token(key=ACCESS_KEY, secret=ACCESS_SECRET)
+client = oauth.Client(consumer, access_token)
+
+timeline_endpoint = "https://api.twitter.com/1.1/search/tweets.json?q=%23india"
+response, data = client.request(timeline_endpoint)
+
+tweets = json.loads(data)
+tweets1=tweets['statuses']
+fp=open("test.txt","w")
+for tweet in tweets1:
+	fp.write(str(tweet['entities']))
+	print deep_search('media_url',(tweet['entities']))
