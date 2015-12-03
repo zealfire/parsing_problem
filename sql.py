@@ -1,5 +1,4 @@
 #writting sql queries
-#http://www.geeksforgeeks.org/browserstack-interview-set-7-online-coding-questions/
 import re
 import shlex
 array=(raw_input().split(' '))
