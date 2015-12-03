@@ -1,5 +1,4 @@
 #writting sql queries
-#http://www.geeksforgeeks.org/browserstack-interview-set-7-online-coding-questions/
 import re
 import shlex
 #print "2014-10-23 11:55">"2014-10-23 11:54"
