@@ -52,7 +52,23 @@ def resultand(query_size,conditions,result_row):
 		i+=4
 		j+=1
 def resultor(query_size,conditions,result_row):
-	''''''
+	i=0
+	j=1
+	#print conditions
+	new_result_row=[]
+	sent_result_row=[]
+	while 1:
+		if j>conditions:
+			return sent_result_row
+		query_size1=[]
+		query_size1.append(query_size[i])
+		query_size1.append(query_size[i+1])
+		query_size1.append(query_size[i+2])
+		new_result_row=singlequery(query_size1,result_row)
+		if len(new_result_row)>len(sent_result_row):
+			sent_result_row=new_result_row
+		i+=4
+		j+=1
 
 for i in range(n):
 	row=raw_input()
@@ -71,7 +87,7 @@ for j in range(m):
 		if joining=='and':
 			print len(resultand(query_size,conditions,result_row))
 		else:
-			resultor(query_size,conditions,result_row)
+			print len(resultor(query_size,conditions,result_row))
 	else:
 		result_row=range(n)
 		print len(singlequery(query_size,result_row))
